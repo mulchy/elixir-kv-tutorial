@@ -1,4 +1,4 @@
 # KvUmbrella
 
-**TODO: Add description**
+Following the guide here: http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html
 
