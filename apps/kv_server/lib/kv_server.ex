@@ -9,13 +9,17 @@ defmodule KVServer do
     children = [
       # Define workers and child supervisors to be supervised
       supervisor(Task.Supervisor, [[name: KVServer.TaskSupervisor]]),
-      worker(Task, [KVServer, :accept, [4040]]),
+      worker(Task, [KVServer, :accept, [port]]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: KVServer.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  def port do
+    Application.fetch_env!(:kv, :port)
   end
 
   require Logger
